@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_contact_links",
+  "info": {
+    "displayName": "Link",
+    "icon": "",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "RedSocial": {
+      "type": "enumeration",
+      "enum": [
+        "Facebook",
+        "Instagram",
+        "X (Twitter)"
+      ],
+      "required": true
+    },
+    "Url": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "isExternal": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
