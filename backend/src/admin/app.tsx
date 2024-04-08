@@ -20,21 +20,15 @@ export default {
       dark: {
         colors: {
           alternative100: "#171717",
-          danger100: "#171717",
           neutral100: "#171717",
           primary100: "#171717",
           secondary100: "#171717",
-          success100: "#171717",
-          warning100: "#171717",
 
           alternative200: "#262626",
-          danger200: "#262626",
           neutral150: "#404040", //left-menu-border & other-borders
           neutral200: "#404040", //input-border
           primary200: "#404040",
           secondary200: "#262626",
-          success200: "#262626",
-          warning200: "#262626",
 
           primary600: "#406fed",
           primary700: "#406fed",
@@ -110,9 +104,63 @@ export default {
         "components.Blocks.dnd.reorder":
           "{item} fue movido. Nueva posición: {position}.",
       },
+      en: {
+        "Auth.form.welcome.title": "Noticias 360",
+        "Auth.form.welcome.subtitle": "Welcome! Log in with your account",
+        "Auth.form.email.placeholder": "example@example.com",
+        "Auth.form.rememberMe.label": "Remember me",
+        "Auth.link.forgot-password": "Forgot your password?",
+        "Auth.link.ready": "Log in",
+        "Auth.link.signin": "Sign up",
+        "app.containers.AuthPage.ForgotPasswordSuccess.text.contact-admin":
+          "If you do not receive this link, please contact the administrator.",
+        "app.components.LeftMenu.navbrand.title": "Noticias 360",
+        "app.components.LeftMenu.navbrand.workplace": "Dashboard",
+        "Settings.profile.form.section.experience.interfaceLanguageHelp":
+          "Selecting will change the interface language for you only.",
+        "Settings.profile.form.section.experience.mode.option-label":
+          "Mode {name} ",
+        "content-manager.containers.SettingPage.editSettings.description":
+          "Drag and drop fields to modify the layout.",
+        "components.ViewSettings.tooltip": "View settings",
+
+        "components.Blocks.modifiers.bold": "Bold (ctrl/cmd + b)",
+        "components.Blocks.modifiers.italic": "Italic (ctrl/cmd + i)",
+        "components.Blocks.modifiers.underline": "Underline (ctrl/cmd + u)",
+        "components.Blocks.modifiers.strikethrough":
+          "Strikethrough (ctrl/cmd + shift + s)",
+        "components.Blocks.modifiers.code": "Code line",
+        "components.Blocks.link": "Link",
+        "components.Blocks.expand": "Expand",
+        "components.Blocks.collapse": "Collapse",
+        "components.Blocks.popover.text": "Text",
+        "components.Blocks.popover.text.placeholder": "Enter link",
+        "components.Blocks.popover.link": "Link",
+        "components.Blocks.popover.link.placeholder": "Paste link",
+        "components.Blocks.popover.link.error": "Please enter a valid link",
+        "components.Blocks.popover.save": "Save",
+        "components.Blocks.popover.cancel": "Cancel",
+        "components.Blocks.popover.remove": "Remove",
+        "components.Blocks.popover.edit": "Edit",
+        "components.Blocks.blocks.selectBlock": "Select a block",
+        "components.Blocks.blocks.text": "Text",
+        "components.Blocks.blocks.heading1": "Heading 1 (#)",
+        "components.Blocks.blocks.heading2": "Heading 2 (##)",
+        "components.Blocks.blocks.heading3": "Heading 3 (###)",
+        "components.Blocks.blocks.heading4": "Heading 4 (####)",
+        "components.Blocks.blocks.heading5": "Heading 5 (#####)",
+        "components.Blocks.blocks.heading6": "Heading 6 (######)",
+        "components.Blocks.blocks.code": "Code block (```)",
+        "components.Blocks.blocks.quote": "Quote (>)",
+        "components.Blocks.blocks.image": "Image (![)",
+        "components.Blocks.blocks.unorderedList": "Unordered list",
+        "components.Blocks.blocks.orderedList": "Ordered list",
+        "components.Blocks.dnd.instruction":
+          "To reorder blocks, press ctrl/cmd along with Shift and the up or down arrow keys",
+        "components.Blocks.dnd.reorder":
+          "{item} was moved. New position: {position}.",
+      },
     },
   },
-  bootstrap(app) {
-    console.log(app);
-  },
+  bootstrap() {},
 };
