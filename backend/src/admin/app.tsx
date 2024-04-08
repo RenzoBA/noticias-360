@@ -66,6 +66,9 @@ export default {
         "content-manager.containers.SettingPage.editSettings.description":
           "Arrastra y suelta los campos para modificar el diseño.",
         "components.ViewSettings.tooltip": "Ver configuración",
+        "content-manager.containers.ListPage.displayedFields":
+          "Campos visualizados",
+        "content-manager.global.displayedFields": "Campos visualizados",
 
         "components.Blocks.modifiers.bold": "Negrita (ctrl/cmd + b)",
         "components.Blocks.modifiers.italic": "Cursiva (ctrl/cmd + i)",
