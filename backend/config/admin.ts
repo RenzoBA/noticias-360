@@ -1,6 +1,9 @@
 export default ({ env }) => ({
   url: "/dashboard",
   auth: {
+    options: {
+      expiresIn: "7d",
+    },
     secret: env("ADMIN_JWT_SECRET"),
   },
   apiToken: {
@@ -12,7 +15,7 @@ export default ({ env }) => ({
     },
   },
   flags: {
-    nps: env.bool("FLAG_NPS", true),
-    promoteEE: env.bool("FLAG_PROMOTE_EE", true),
+    nps: env.bool("FLAG_NPS", false),
+    promoteEE: env.bool("FLAG_PROMOTE_EE", false),
   },
 });
