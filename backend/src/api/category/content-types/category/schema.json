@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "categorias",
+  "collectionName": "categories",
   "info": {
-    "singularName": "categoria",
-    "pluralName": "categorias",
+    "singularName": "category",
+    "pluralName": "categories",
     "displayName": "Categoría",
     "description": ""
   },
@@ -12,24 +12,25 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Nombre": {
-      "type": "string",
-      "required": true,
-      "unique": true
-    },
-    "Descripcion": {
-      "type": "text"
-    },
-    "Url": {
+    "name": {
       "type": "string",
       "unique": true,
       "required": true
     },
-    "articulos": {
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "path": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "articles": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::articulo.articulo",
-      "mappedBy": "categoria"
+      "target": "api::article.article",
+      "mappedBy": "category"
     }
   }
 }

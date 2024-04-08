@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "articulos",
+  "collectionName": "articles",
   "info": {
-    "singularName": "articulo",
-    "pluralName": "articulos",
+    "singularName": "article",
+    "pluralName": "articles",
     "displayName": "Artículo",
     "description": ""
   },
@@ -12,18 +12,20 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Titulo": {
+    "title": {
       "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "lead": {
+      "type": "text",
       "required": true
     },
-    "Lead": {
-      "type": "text"
-    },
-    "Contenido": {
+    "content": {
       "type": "blocks",
       "required": true
     },
-    "Portada": {
+    "cover": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -31,11 +33,11 @@
         "images"
       ]
     },
-    "categoria": {
+    "category": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::categoria.categoria",
-      "inversedBy": "articulos"
+      "target": "api::category.category",
+      "inversedBy": "articles"
     }
   }
 }

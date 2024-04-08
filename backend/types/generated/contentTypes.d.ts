@@ -362,11 +362,11 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiArticuloArticulo extends Schema.CollectionType {
-  collectionName: 'articulos';
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
   info: {
-    singularName: 'articulo';
-    pluralName: 'articulos';
+    singularName: 'article';
+    pluralName: 'articles';
     displayName: 'Art\u00EDculo';
     description: '';
   };
@@ -374,26 +374,26 @@ export interface ApiArticuloArticulo extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Titulo: Attribute.String & Attribute.Required;
-    Lead: Attribute.Text;
-    Contenido: Attribute.Blocks & Attribute.Required;
-    Portada: Attribute.Media;
-    categoria: Attribute.Relation<
-      'api::articulo.articulo',
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    lead: Attribute.Text & Attribute.Required;
+    content: Attribute.Blocks & Attribute.Required;
+    cover: Attribute.Media;
+    category: Attribute.Relation<
+      'api::article.article',
       'manyToOne',
-      'api::categoria.categoria'
+      'api::category.category'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::articulo.articulo',
+      'api::article.article',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::articulo.articulo',
+      'api::article.article',
       'oneToOne',
       'admin::user'
     > &
@@ -401,11 +401,11 @@ export interface ApiArticuloArticulo extends Schema.CollectionType {
   };
 }
 
-export interface ApiCategoriaCategoria extends Schema.CollectionType {
-  collectionName: 'categorias';
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
   info: {
-    singularName: 'categoria';
-    pluralName: 'categorias';
+    singularName: 'category';
+    pluralName: 'categories';
     displayName: 'Categor\u00EDa';
     description: '';
   };
@@ -413,25 +413,25 @@ export interface ApiCategoriaCategoria extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Nombre: Attribute.String & Attribute.Required & Attribute.Unique;
-    Descripcion: Attribute.Text;
-    Url: Attribute.String & Attribute.Required & Attribute.Unique;
-    articulos: Attribute.Relation<
-      'api::categoria.categoria',
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    description: Attribute.Text & Attribute.Required;
+    path: Attribute.String & Attribute.Required & Attribute.Unique;
+    articles: Attribute.Relation<
+      'api::category.category',
       'oneToMany',
-      'api::articulo.articulo'
+      'api::article.article'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::categoria.categoria',
+      'api::category.category',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::categoria.categoria',
+      'api::category.category',
       'oneToOne',
       'admin::user'
     > &
@@ -876,8 +876,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::articulo.articulo': ApiArticuloArticulo;
-      'api::categoria.categoria': ApiCategoriaCategoria;
+      'api::article.article': ApiArticleArticle;
+      'api::category.category': ApiCategoryCategory;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
