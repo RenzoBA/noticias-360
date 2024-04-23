@@ -21,16 +21,16 @@
       "type": "text",
       "required": true
     },
-    "path": {
-      "type": "string",
-      "unique": true,
-      "required": true
-    },
     "articles": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::article.article",
-      "mappedBy": "category"
+      "mappedBy": "categories"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
     }
   }
 }

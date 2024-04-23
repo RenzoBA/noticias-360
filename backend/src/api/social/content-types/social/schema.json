@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "socials",
+  "info": {
+    "singularName": "social",
+    "pluralName": "socials",
+    "displayName": "Social",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "user": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "enumeration",
+      "enum": [
+        "Facebook",
+        "X (Twitter)",
+        "Instagram",
+        "Threads",
+        "LinkedIn"
+      ],
+      "required": true
+    }
+  }
+}

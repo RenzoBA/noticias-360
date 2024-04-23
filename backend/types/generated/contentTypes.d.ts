@@ -367,7 +367,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   info: {
     singularName: 'article';
     pluralName: 'articles';
-    displayName: 'Art\u00EDculo';
+    displayName: 'Noticia';
     description: '';
   };
   options: {
@@ -378,11 +378,12 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     lead: Attribute.Text & Attribute.Required;
     content: Attribute.Blocks & Attribute.Required;
     cover: Attribute.Media;
-    category: Attribute.Relation<
+    categories: Attribute.Relation<
       'api::article.article',
-      'manyToOne',
+      'manyToMany',
       'api::category.category'
     >;
+    slug: Attribute.UID<'api::article.article', 'title'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -415,12 +416,12 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     description: Attribute.Text & Attribute.Required;
-    path: Attribute.String & Attribute.Required & Attribute.Unique;
     articles: Attribute.Relation<
       'api::category.category',
-      'oneToMany',
+      'manyToMany',
       'api::article.article'
     >;
+    slug: Attribute.UID<'api::category.category', 'name'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -432,6 +433,42 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSocialSocial extends Schema.CollectionType {
+  collectionName: 'socials';
+  info: {
+    singularName: 'social';
+    pluralName: 'socials';
+    displayName: 'Social';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    url: Attribute.String & Attribute.Required & Attribute.Unique;
+    user: Attribute.String & Attribute.Required;
+    name: Attribute.Enumeration<
+      ['Facebook', 'X (Twitter)', 'Instagram', 'Threads', 'LinkedIn']
+    > &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::social.social',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::social.social',
       'oneToOne',
       'admin::user'
     > &
@@ -878,6 +915,7 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::article.article': ApiArticleArticle;
       'api::category.category': ApiCategoryCategory;
+      'api::social.social': ApiSocialSocial;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
