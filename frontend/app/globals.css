@@ -4,6 +4,11 @@
 
 @layer base {
   :root {
+    --custom-blue: 224, 100%, 40%;
+    --custom-blue-light: 224, 83%, 59%;
+    --custom-purple: 244, 92%, 71%;
+    --custom-green: 166, 100%, 47%;
+
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
 
@@ -36,6 +41,11 @@
   }
 
   .dark {
+    --custom-blue: 0 56% 205%;
+    --custom-blue-light: 64 111% 237%;
+    --custom-purple: 124 114% 249%;
+    --custom-green: 0 241% 183%;
+
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
 
