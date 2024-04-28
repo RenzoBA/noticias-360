@@ -24,6 +24,7 @@ const Footer = () => {
             target="_blank"
             className="whitespace-nowrap hover:underline"
             prefetch={false}
+            aria-label="LinkedIn de Renzo Bocanegra. Abre en una nueva ventana."
           >
             Renzo Bocanegra
           </Link>

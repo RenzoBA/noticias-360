@@ -31,6 +31,7 @@ const SocialNetworks: FC<SocialNetworksProps> = async ({ height, width }) => {
         <li
           key={social.id}
           className="group flex flex-row items-center font-medium text-white"
+          aria-label={social.name}
         >
           <SocialIcon
             url={social.url}
