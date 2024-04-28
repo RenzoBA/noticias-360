@@ -1,3 +1,5 @@
+import { BASE_URL } from "@/constants";
+import axios from "axios";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -44,3 +46,23 @@ export function flattenAttributes(data: any): any {
 
   return flattened;
 }
+
+export const getCategoryData = async (categoryId: string, query: string) => {
+  const { data } = await axios(
+    `${BASE_URL}/api/categories/${categoryId}?${query}`
+  );
+
+  return flattenAttributes(data);
+};
+
+export const getArticlesData = async (query: string) => {
+  const { data } = await axios(`${BASE_URL}/api/articles?${query}`);
+  return flattenAttributes(data);
+};
+
+export const getArticleData = async (slug: string, query: string) => {
+  const { data } = await axios(
+    `${BASE_URL}/api/articles/${slug.split("-").at(-1)}?${query}`
+  );
+  return flattenAttributes(data);
+};

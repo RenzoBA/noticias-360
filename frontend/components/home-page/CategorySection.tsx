@@ -5,8 +5,12 @@ import axios from "axios";
 import { BASE_URL } from "@/constants";
 import Link from "next/link";
 import ArticleCard from "../articles/ArticleCard";
-import { Suspense } from "react";
+import { FC, Suspense } from "react";
 import { ArticlesSkeleton } from "../skeletons/ArticleCardSkeleton";
+
+interface CategorySectionProps {
+  id: number;
+}
 
 const query = qs.stringify({
   fields: ["name", "slug"],
@@ -32,7 +36,7 @@ const getCategoryData = async (id: number) => {
   return flattenAttributes(data) as SoftCategoryType;
 };
 
-const CategorySection = async ({ id }: { id: number }) => {
+const CategorySection: FC<CategorySectionProps> = async ({ id }) => {
   const category = await getCategoryData(id);
 
   return (
