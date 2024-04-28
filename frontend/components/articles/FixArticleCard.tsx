@@ -1,20 +1,38 @@
+import qs from "qs";
 import { BASE_URL } from "@/constants";
-import { SoftArticleType } from "@/types/article";
 import Link from "next/link";
-import { FC } from "react";
+import { getArticlesData } from "@/lib/utils";
+import { SoftArticleType } from "@/types/article";
 
-interface FixArticleCardProps {
-  categorySlug: string;
-  article: SoftArticleType;
-}
+const fixArticleQuery = qs.stringify({
+  sort: ["publishedAt:desc"],
+  fields: ["title", "lead", "slug", "publishedAt"],
+  populate: {
+    cover: {
+      fields: ["url", "alternativeText"],
+    },
+    categories: {
+      fields: ["name", "slug"],
+    },
+  },
+  pagination: {
+    start: 0,
+    limit: 1,
+  },
+});
 
-const FixArticleCard: FC<FixArticleCardProps> = ({ categorySlug, article }) => {
-  const date = new Date(article.publishedAt);
+const FixArticleCard = async () => {
+  const { data } = (await getArticlesData(fixArticleQuery)) as {
+    data: SoftArticleType[];
+  };
+  const article = data[0];
+
+  const date = new Date(data[0].publishedAt);
 
   return (
     <article className="flex flex-col gap-4">
       <Link
-        href={`${categorySlug}/${article.slug}-${article.id}`}
+        href={`${article.categories.data[0].slug}/${article.slug}-${article.id}`}
         className="relative aspect-video w-full"
         prefetch={false}
       >
@@ -38,7 +56,7 @@ const FixArticleCard: FC<FixArticleCardProps> = ({ categorySlug, article }) => {
           ))}
         </div>
         <Link
-          href={`${categorySlug}/${article.slug}-${article.id}`}
+          href={`${article.categories.data[0].slug}/${article.slug}-${article.id}`}
           className="line-clamp-4 text-2xl font-bold hover:underline lg:text-4xl"
           prefetch={false}
         >

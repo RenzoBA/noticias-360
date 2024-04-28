@@ -1,12 +1,12 @@
 import qs from "qs";
 import axios from "axios";
-import { FC } from "react";
-import { flattenAttributes } from "@/lib/utils";
-import { ArticleType } from "@/types/article";
+import { FC, Suspense } from "react";
+import { getArticleData } from "@/lib/utils";
 import Link from "next/link";
 import CategorySection from "@/components/home-page/CategorySection";
 import { Metadata } from "next";
 import BlockRendererClient from "@/components/BlockRendererClient";
+import { ArticleType } from "@/types/article";
 
 interface Props {
   params: { category: string; article: string };
@@ -36,15 +36,8 @@ const query = qs.stringify({
   },
 });
 
-const getArticleData = async (slug: string) => {
-  const { data } = await axios(
-    `${BASE_URL}/api/articles/${slug.split("-").at(-1)}?${query}`
-  );
-  return flattenAttributes(data) as ArticleType;
-};
-
 const page: FC<Props> = async ({ params }) => {
-  const article = await getArticleData(params.article);
+  const article = (await getArticleData(params.article, query)) as ArticleType;
 
   const date = new Date(article.publishedAt);
 
@@ -88,6 +81,7 @@ const page: FC<Props> = async ({ params }) => {
           <img
             src={`${BASE_URL + article.cover.url}`}
             alt={article.cover.alternativeText || ""}
+            className="w-full"
           />
           <figcaption className="mt-2 text-sm text-neutral-600">
             {article.cover.caption || ""}
@@ -98,9 +92,11 @@ const page: FC<Props> = async ({ params }) => {
         </div>
       </article>
       <div>
-        {article.categories.data.map((category) => (
-          <CategorySection key={category.id} id={category.id} />
-        ))}
+        <Suspense>
+          {article.categories.data.map((category) => (
+            <CategorySection key={category.id} id={category.id} />
+          ))}
+        </Suspense>
       </div>
     </main>
   );
