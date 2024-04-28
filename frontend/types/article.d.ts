@@ -35,7 +35,6 @@ export type ArticleType = {
       id: number;
       name: string;
       slug: string;
-      color: string;
     }[];
   };
 };
