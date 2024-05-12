@@ -18,6 +18,18 @@ export default function Home() {
       <Suspense>
         <CategorySection id={4} />
       </Suspense>
+      <Suspense>
+        <CategorySection id={5} />
+      </Suspense>
+      <Suspense>
+        <CategorySection id={6} />
+      </Suspense>
+      <Suspense>
+        <CategorySection id={7} />
+      </Suspense>
+      <Suspense>
+        <CategorySection id={8} />
+      </Suspense>
     </main>
   );
 }
