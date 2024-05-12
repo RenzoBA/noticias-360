@@ -40,7 +40,7 @@ const CategorySection: FC<CategorySectionProps> = async ({ id }) => {
   const category = await getCategoryData(id);
 
   return (
-    <section className="mt-16 flex flex-col gap-4 divide-y divide-primary">
+    <section className="mt-16 flex w-full flex-col gap-4 divide-y divide-primary">
       <div className="flex flex-row items-end justify-between">
         <h2>
           <Link
