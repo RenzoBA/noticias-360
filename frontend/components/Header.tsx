@@ -11,6 +11,7 @@ const BASE_URL = process.env.BASE_URL!;
 
 const query = qs.stringify({
   fields: ["name", "slug"],
+  sort: ["id:asc"],
 });
 
 const getCategoriesData = async () => {
