@@ -29,9 +29,9 @@ const Header = async () => {
           <Image
             src="/assets/logo-extended-white.svg"
             alt="noticias-360-logo"
-            width={330}
-            height={100}
-            className="w-28 md:w-40"
+            width={350}
+            height={120}
+            className="w-36 md:w-[310px]"
           />
         </Link>
       </div>
