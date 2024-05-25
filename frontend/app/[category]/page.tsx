@@ -1,7 +1,7 @@
 import qs from "qs";
 import { getCategoryData } from "@/lib/utils";
 import axios from "axios";
-import { FC, Suspense } from "react";
+import { Suspense } from "react";
 import { CategoryName, SoftCategoryType } from "@/types/category";
 import { BASE_URL, categoriesId } from "@/constants";
 import { ArticlesSkeleton } from "@/components/skeletons/ArticleCardSkeleton";
@@ -10,6 +10,7 @@ import Articles from "@/components/articles/Articles";
 
 interface Props {
   params: { category: CategoryName };
+  searchParams: { page?: string };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -26,7 +27,9 @@ const query = qs.stringify({
   fields: ["name", "description"],
 });
 
-const page: FC<Props> = async ({ params }) => {
+const page = async ({ params, searchParams }: Readonly<Props>) => {
+  const currentPage = Number(searchParams.page) || 1;
+
   const categoryId = categoriesId[params.category];
 
   const category = (await getCategoryData(categoryId, query)) as Pick<
@@ -44,9 +47,13 @@ const page: FC<Props> = async ({ params }) => {
           <p className="mt-2 text-xl lg:text-2xl">{category.description}</p>
         </div>
       </div>
-      <div className="flex w-full flex-col gap-8 pt-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+      <div className="flex w-full flex-col gap-20 pt-6">
         <Suspense fallback={<ArticlesSkeleton />}>
-          <Articles categoryId={categoryId} categorySlug={params.category} />
+          <Articles
+            currentPage={currentPage}
+            categoryId={categoryId}
+            categorySlug={params.category}
+          />
         </Suspense>
       </div>
     </main>

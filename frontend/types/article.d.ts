@@ -38,3 +38,12 @@ export type ArticleType = {
     }[];
   };
 };
+
+export type ArticleMetaType = {
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  };
+};
