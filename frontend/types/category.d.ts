@@ -3,6 +3,10 @@ import { SoftArticleType } from "./article";
 export type CategoryName =
   | "sociedad"
   | "politica"
+  | "regiones"
+  | "deportes"
+  | "internacionales"
+  | "informes"
   | "entrevistas"
   | "palco-360";
 
