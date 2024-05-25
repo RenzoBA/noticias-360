@@ -42,7 +42,7 @@ const Articles: FC<ArticlesProps> = async ({ categoryId, categorySlug }) => {
   const category = await getArticlesData(categoryId);
 
   return (
-    <>
+    <div className="flex w-full flex-col gap-8 sm:grid sm:grid-cols-2 lg:grid-cols-4">
       {category.articles.data.map((article) => (
         <ArticleCard
           key={article.id}
@@ -50,7 +50,7 @@ const Articles: FC<ArticlesProps> = async ({ categoryId, categorySlug }) => {
           article={article}
         />
       ))}
-    </>
+    </div>
   );
 };
 
