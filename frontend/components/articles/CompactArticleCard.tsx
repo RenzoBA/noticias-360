@@ -32,7 +32,7 @@ const CompactArticleCard: FC<CompactArticleCardProps> = ({
           {article.categories.data.map((category) => (
             <Link
               key={category.id}
-              href={category.slug}
+              href={`/${category.slug}?page=1`}
               className="whitespace-nowrap hover:underline"
               prefetch={false}
             >

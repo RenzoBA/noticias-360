@@ -28,7 +28,7 @@ const Navbar: FC<NavbarProps> = ({ categories }) => {
         {categories.map((category) => (
           <li key={category.id}>
             <Link
-              href={`/${category.slug}`}
+              href={`/${category.slug}?page=1`}
               className={cn("ml-4 hover:underline", {
                 underline: pathname === `/${category.slug}`,
               })}
