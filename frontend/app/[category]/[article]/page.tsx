@@ -7,6 +7,7 @@ import CategorySection from "@/components/home-page/CategorySection";
 import { Metadata } from "next";
 import BlockRendererClient from "@/components/BlockRendererClient";
 import { ArticleType } from "@/types/article";
+import ArticleActions from "@/components/articles/ArticleActions";
 
 interface Props {
   params: { category: string; article: string };
@@ -60,20 +61,27 @@ const page: FC<Props> = async ({ params }) => {
           {article.title}
         </h1>
         <h2 className="mt-4 text-xl lg:text-2xl">{article.lead}</h2>
-        <div className="mt-4 flex flex-col gap-2 text-xs font-medium text-neutral-600">
-          <Link href="/" className="uppercase hover:underline" prefetch={false}>
-            renzo bocanegra
-          </Link>
-          <time datatype={article.publishedAt}>
-            {date.toLocaleDateString("es-ES", {
-              minute: "2-digit",
-              hour: "2-digit",
-              day: "2-digit",
-              month: "long",
-              year: "numeric",
-              hour12: true,
-            })}
-          </time>
+        <div className="mt-4 flex w-full flex-row items-center justify-between text-neutral-600">
+          <div className="flex flex-col gap-2 text-xs font-medium">
+            <Link
+              href="/"
+              className="uppercase hover:underline"
+              prefetch={false}
+            >
+              renzo bocanegra
+            </Link>
+            <time datatype={article.publishedAt}>
+              {date.toLocaleDateString("es-ES", {
+                minute: "2-digit",
+                hour: "2-digit",
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+                hour12: true,
+              })}
+            </time>
+          </div>
+          <ArticleActions />
         </div>
       </div>
       <article className="mx-auto max-w-3xl pt-8">
