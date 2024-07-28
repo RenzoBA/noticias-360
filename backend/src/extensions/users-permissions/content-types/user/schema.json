@@ -65,13 +65,27 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "Profesion": {
+    "profession": {
       "type": "string",
       "required": true
     },
-    "Resumen": {
+    "description": {
       "type": "text",
       "required": true
+    },
+    "news": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "mappedBy": "user"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
