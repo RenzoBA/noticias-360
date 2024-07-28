@@ -15,7 +15,7 @@ const MiniArticleCard: FC<MiniArticleCardProps> = ({
   const date = new Date(article.publishedAt);
 
   return (
-    <article className="flex flex-row gap-4 pt-4">
+    <article className="flex flex-row gap-4 text-balance pt-4">
       <div className="flex w-full flex-col items-start gap-2">
         <div className="flex flex-nowrap gap-2 text-xs font-medium uppercase text-custom-blue">
           {article.categories.data.map((category) => (
@@ -63,7 +63,7 @@ const MiniArticleCard: FC<MiniArticleCardProps> = ({
       </div>
       <Link
         href={`${categorySlug}/${article.slug}-${article.id}`}
-        className="relative aspect-video w-full"
+        className="relative w-full"
         prefetch={false}
       >
         <img

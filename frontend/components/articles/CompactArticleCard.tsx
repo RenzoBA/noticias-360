@@ -15,7 +15,7 @@ const CompactArticleCard: FC<CompactArticleCardProps> = ({
   const date = new Date(article.publishedAt);
 
   return (
-    <article className="flex flex-col gap-4 pt-4">
+    <article className="flex flex-col gap-4 text-balance pt-4">
       <Link
         href={`${categorySlug}/${article.slug}-${article.id}`}
         className="relative aspect-3/2 w-full"

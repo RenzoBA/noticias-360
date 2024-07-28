@@ -38,10 +38,10 @@ const FixArticleCard = async () => {
   const date = new Date(data[0].publishedAt);
 
   return (
-    <article className="flex flex-col gap-4">
+    <article className="flex flex-col gap-4 text-pretty">
       <Link
         href={`${article.categories.data[0].slug}/${article.slug}-${article.id}`}
-        className="relative aspect-video w-full"
+        className="relative aspect-3/2 w-full"
         prefetch={false}
       >
         <img

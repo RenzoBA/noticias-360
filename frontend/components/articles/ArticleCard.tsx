@@ -12,7 +12,7 @@ const ArticleCard: FC<ArticleCardProps> = ({ categorySlug, article }) => {
   const date = new Date(article.publishedAt);
 
   return (
-    <article className="flex flex-col gap-4">
+    <article className="flex flex-col gap-4 text-balance">
       <Link
         href={`/${categorySlug}/${article.slug}-${article.id}`}
         className="relative aspect-3/2 w-full"
