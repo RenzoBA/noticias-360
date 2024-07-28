@@ -48,8 +48,8 @@ export default {
     },
     translations: {
       es: {
-        "Auth.form.welcome.title": "Noticias 360",
-        "Auth.form.welcome.subtitle": "Bienvenido! Inicia sesión con tu cuenta",
+        "Auth.form.welcome.title": "Bienvenido!",
+        "Auth.form.welcome.subtitle": "Inicia sesión con tu cuenta",
         "Auth.form.email.placeholder": "example@example.com",
         "Auth.form.rememberMe.label": "Recordar mi usuario",
         "Auth.link.forgot-password": "¿Olvidaste tu contraseña?",
@@ -108,8 +108,8 @@ export default {
           "{item} fue movido. Nueva posición: {position}.",
       },
       en: {
-        "Auth.form.welcome.title": "Noticias 360",
-        "Auth.form.welcome.subtitle": "Welcome! Log in with your account",
+        "Auth.form.welcome.title": "Welcome!",
+        "Auth.form.welcome.subtitle": "Log in with your account",
         "Auth.form.email.placeholder": "example@example.com",
         "Auth.form.rememberMe.label": "Remember me",
         "Auth.link.forgot-password": "Forgot your password?",
