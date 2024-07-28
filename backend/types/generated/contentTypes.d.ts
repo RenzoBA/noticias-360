@@ -384,6 +384,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'api::category.category'
     >;
     slug: Attribute.UID<'api::article.article', 'title'> & Attribute.Required;
+    user: Attribute.Relation<
+      'api::article.article',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -884,8 +889,14 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    Profesion: Attribute.String & Attribute.Required;
-    Resumen: Attribute.Text & Attribute.Required;
+    profession: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    news: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::article.article'
+    >;
+    photo: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
