@@ -63,7 +63,7 @@ const MiniArticleCard: FC<MiniArticleCardProps> = ({
       </div>
       <Link
         href={`${categorySlug}/${article.slug}-${article.id}`}
-        className="relative w-full"
+        className="relative w-40"
         prefetch={false}
       >
         <img

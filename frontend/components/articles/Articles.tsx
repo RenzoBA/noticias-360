@@ -63,7 +63,7 @@ const Articles: FC<ArticlesProps> = async ({
 
   return (
     <>
-      <div className="flex w-full flex-col gap-8 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+      <div className="flex w-full flex-col gap-10 sm:grid sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
         {data.map((article) => (
           <ArticleCard
             key={article.id}

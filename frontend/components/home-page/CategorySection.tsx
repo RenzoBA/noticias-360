@@ -67,7 +67,7 @@ const CategorySection: FC<CategorySectionProps> = async ({ id }) => {
           Ver todo
         </Link>
       </div>
-      <div className="flex flex-col gap-8 pt-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+      <div className="flex flex-col gap-10 pt-6 sm:grid sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
         <Suspense fallback={<ArticlesSkeleton />}>
           {category.articles.data.map((article) => (
             <ArticleCard
