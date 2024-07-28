@@ -17,13 +17,21 @@ const query = qs.stringify({
   populate: {
     articles: {
       sort: ["publishedAt:desc"],
-      fields: ["title", "lead", "slug", "publishedAt"],
+      fields: ["title", "publishedAt", "lead", "slug"],
       populate: {
-        cover: {
-          fields: ["url", "alternativeText"],
+        user: {
+          fields: ["username"],
+          populate: {
+            photo: {
+              fields: ["alternativeText", "formats"],
+            },
+          },
         },
         categories: {
           fields: ["name", "slug"],
+        },
+        cover: {
+          fields: ["alternativeText", "formats"],
         },
       },
       limit: 4,

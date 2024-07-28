@@ -16,18 +16,26 @@ interface ArticlesProps {
 const getArticlesData = async (categoryId: string, currentPage: number) => {
   const query = qs.stringify({
     sort: ["publishedAt:desc"],
-    fields: ["title", "lead", "slug", "publishedAt"],
+    fields: ["title", "publishedAt", "lead", "slug"],
     filters: {
       categories: {
         id: categoryId,
       },
     },
     populate: {
-      cover: {
-        fields: ["url", "alternativeText"],
+      user: {
+        fields: ["username"],
+        populate: {
+          photo: {
+            fields: ["alternativeText", "formats"],
+          },
+        },
       },
       categories: {
         fields: ["name", "slug"],
+      },
+      cover: {
+        fields: ["alternativeText", "formats"],
       },
     },
     pagination: {

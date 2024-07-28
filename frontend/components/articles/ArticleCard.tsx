@@ -19,12 +19,12 @@ const ArticleCard: FC<ArticleCardProps> = ({ categorySlug, article }) => {
         prefetch={false}
       >
         <img
-          src={BASE_URL + article.cover.url}
+          src={BASE_URL + article.cover.formats.small.url}
           className="absolute inset-0 h-full w-full object-cover transition-all duration-300 hover:brightness-90"
           alt={article.cover.alternativeText}
         />
       </Link>
-      <div className="flex w-full flex-col items-start gap-2">
+      <div className="flex h-[22rem] w-full flex-col items-start gap-2">
         <div className="flex flex-nowrap gap-2 text-xs font-medium uppercase text-custom-blue">
           {article.categories.data.map((category) => (
             <Link
@@ -47,17 +47,29 @@ const ArticleCard: FC<ArticleCardProps> = ({ categorySlug, article }) => {
         <p className="line-clamp-5 text-lg font-normal leading-6">
           {article.lead}
         </p>
-        <div className="mt-1 flex flex-col gap-1 text-xs font-medium text-neutral-600">
-          <Link href="/" className="uppercase hover:underline" prefetch={false}>
-            renzo bocanegra
-          </Link>
-          <time datatype={article.publishedAt}>
-            {date.toLocaleDateString("es-ES", {
-              day: "2-digit",
-              month: "long",
-              year: "numeric",
-            })}
-          </time>
+        <div className="mt-auto flex flex-row items-center gap-2">
+          <img
+            src={`${BASE_URL + article.user.photo.formats.thumbnail.url}`}
+            alt={article.user.photo.alternativeText || ""}
+            className="h-10 w-10 rounded-full"
+          />
+          <div className="mt-1 flex flex-col gap-1 text-xs font-medium text-neutral-600">
+            <p
+              // href="/"
+              // className="uppercase hover:underline"
+              // prefetch={false}
+              className="uppercase"
+            >
+              {article.user.username}
+            </p>
+            <time datatype={article.publishedAt}>
+              {date.toLocaleDateString("es-ES", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+              })}
+            </time>
+          </div>
         </div>
       </div>
     </article>

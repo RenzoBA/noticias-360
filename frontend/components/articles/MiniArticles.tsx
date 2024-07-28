@@ -5,13 +5,21 @@ import { SoftArticleType } from "@/types/article";
 
 const miniArticlesQuery = qs.stringify({
   sort: ["publishedAt:desc"],
-  fields: ["title", "slug", "publishedAt"],
+  fields: ["title", "publishedAt", "slug"],
   populate: {
-    cover: {
-      fields: ["url", "alternativeText"],
+    user: {
+      fields: ["username"],
+      populate: {
+        photo: {
+          fields: ["alternativeText", "formats"],
+        },
+      },
     },
     categories: {
       fields: ["name", "slug"],
+    },
+    cover: {
+      fields: ["alternativeText", "formats"],
     },
   },
   pagination: {

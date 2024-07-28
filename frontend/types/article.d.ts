@@ -1,3 +1,17 @@
+type User = {
+  id: number;
+  username: string;
+  photo: {
+    id: number;
+    alternativeText: string;
+    formats: {
+      thumbnail: {
+        url: string;
+      };
+    };
+  };
+};
+
 export type SoftArticleType = {
   id: number;
   title: string;
@@ -6,8 +20,15 @@ export type SoftArticleType = {
   publishedAt: string;
   cover: {
     id: number;
-    url: string;
     alternativeText: string;
+    formats: {
+      small: {
+        url: string;
+      };
+      large: {
+        url: string;
+      };
+    };
   };
   categories: {
     data: {
@@ -16,6 +37,7 @@ export type SoftArticleType = {
       name: string;
     }[];
   };
+  user: User;
 };
 
 export type ArticleType = {
@@ -37,6 +59,7 @@ export type ArticleType = {
       slug: string;
     }[];
   };
+  user: User;
 };
 
 export type ArticleMetaType = {

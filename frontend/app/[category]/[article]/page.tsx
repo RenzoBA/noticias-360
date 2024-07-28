@@ -28,8 +28,16 @@ const BASE_URL = process.env.BASE_URL!;
 const query = qs.stringify({
   fields: ["title", "publishedAt", "lead", "content"],
   populate: {
+    user: {
+      fields: ["username"],
+      populate: {
+        photo: {
+          fields: ["alternativeText", "formats"],
+        },
+      },
+    },
     categories: {
-      fields: ["name", "slug"],
+      fields: ["name", "slug", "description"],
     },
     cover: {
       fields: ["url", "alternativeText", "caption"],
@@ -62,24 +70,32 @@ const page: FC<Props> = async ({ params }) => {
         </h1>
         <h2 className="mt-4 text-xl lg:text-2xl">{article.lead}</h2>
         <div className="mt-4 flex w-full flex-row items-center justify-between text-neutral-600">
-          <div className="flex flex-col gap-2 text-xs font-medium">
-            <Link
-              href="/"
-              className="uppercase hover:underline"
-              prefetch={false}
-            >
-              renzo bocanegra
-            </Link>
-            <time datatype={article.publishedAt}>
-              {date.toLocaleDateString("es-ES", {
-                minute: "2-digit",
-                hour: "2-digit",
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-                hour12: true,
-              })}
-            </time>
+          <div className="flex flex-row items-center gap-2">
+            <img
+              src={`${BASE_URL + article.user.photo.formats.thumbnail.url}`}
+              alt={article.user.photo.alternativeText || ""}
+              className="h-12 w-12 rounded-full"
+            />
+            <div className="flex flex-col gap-2 text-xs font-medium">
+              <p
+                // href="/"
+                // className="uppercase hover:underline"
+                // prefetch={false}
+                className="uppercase"
+              >
+                {article.user.username}
+              </p>
+              <time datatype={article.publishedAt}>
+                {date.toLocaleDateString("es-ES", {
+                  minute: "2-digit",
+                  hour: "2-digit",
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                  hour12: true,
+                })}
+              </time>
+            </div>
           </div>
           <ArticleActions />
         </div>
