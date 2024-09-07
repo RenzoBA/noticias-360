@@ -5,8 +5,8 @@ import { flattenAttributes } from "@/lib/utils";
 import Link from "next/link";
 import { CategoryLinkType } from "@/types/category";
 import Navbar from "./Navbar";
+import { BASE_URL } from "@/constants";
 
-const BASE_URL = process.env.BASE_URL!;
 // const currentDate = new Date();
 
 const query = qs.stringify({

@@ -5,13 +5,12 @@ import { flattenAttributes } from "@/lib/utils";
 import { SocialLinkType } from "@/types/social";
 import { FC } from "react";
 import Link from "next/link";
+import { BASE_URL } from "@/constants";
 
 interface SocialNetworksProps {
   height: number;
   width: number;
 }
-
-const BASE_URL = process.env.BASE_URL!;
 
 const socialsQuery = qs.stringify({
   fields: ["name", "url", "user"],

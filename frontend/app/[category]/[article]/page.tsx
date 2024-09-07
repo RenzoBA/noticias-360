@@ -8,6 +8,7 @@ import { Metadata } from "next";
 import BlockRendererClient from "@/components/BlockRendererClient";
 import { ArticleType } from "@/types/article";
 import ArticleActions from "@/components/articles/ArticleActions";
+import { BASE_URL } from "@/constants";
 
 interface Props {
   params: { category: string; article: string };
@@ -22,8 +23,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: data.data.attributes.title,
   };
 }
-
-const BASE_URL = process.env.BASE_URL!;
 
 const query = qs.stringify({
   fields: ["title", "publishedAt", "lead", "content"],
