@@ -1,11 +1,8 @@
 import qs from "qs";
 import Image from "next/image";
-import axios from "axios";
-import { flattenAttributes } from "@/lib/utils";
+import { getCategoriesData } from "@/lib/utils";
 import Link from "next/link";
-import { CategoryLinkType } from "@/types/category";
 import Navbar from "./Navbar";
-import { BASE_URL } from "@/constants";
 
 // const currentDate = new Date();
 
@@ -14,13 +11,8 @@ const query = qs.stringify({
   sort: ["id:asc"],
 });
 
-const getCategoriesData = async () => {
-  const { data } = await axios(`${BASE_URL}/api/categories?${query}`);
-  return flattenAttributes(data.data) as CategoryLinkType[];
-};
-
 const Header = async () => {
-  const categories = await getCategoriesData();
+  const categories = (await getCategoriesData(query)) ?? [];
 
   return (
     <header>

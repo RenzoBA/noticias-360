@@ -6,7 +6,6 @@ import Link from "next/link";
 import CategorySection from "@/components/home-page/CategorySection";
 import { Metadata } from "next";
 import BlockRendererClient from "@/components/BlockRendererClient";
-import { ArticleType } from "@/types/article";
 import ArticleActions from "@/components/articles/ArticleActions";
 import { BASE_URL } from "@/constants";
 
@@ -45,7 +44,7 @@ const query = qs.stringify({
 });
 
 const page: FC<Props> = async ({ params }) => {
-  const article = (await getArticleData(params.article, query)) as ArticleType;
+  const article = await getArticleData(params.article, query);
 
   const date = new Date(article.publishedAt);
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getArticlesData } from "@/lib/utils";
 import { SoftArticleType } from "@/types/article";
 
-const fixArticleQuery = qs.stringify({
+const fixArticlesQuery = qs.stringify({
   sort: ["publishedAt:desc"],
   fields: ["title", "publishedAt", "lead", "slug"],
   populate: {
@@ -30,10 +30,10 @@ const fixArticleQuery = qs.stringify({
 });
 
 const FixArticleCard = async () => {
-  const { data } = (await getArticlesData(fixArticleQuery)) as {
-    data: SoftArticleType[];
-  };
+  const { data } = await getArticlesData(fixArticlesQuery);
   const article = data[0];
+
+  if (!article) return;
 
   const date = new Date(data[0].publishedAt);
 

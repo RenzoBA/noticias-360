@@ -1,7 +1,6 @@
 import qs from "qs";
 import { getArticlesData } from "@/lib/utils";
 import MiniArticleCard from "./MiniArticleCard";
-import { SoftArticleType } from "@/types/article";
 
 const miniArticlesQuery = qs.stringify({
   sort: ["publishedAt:desc"],
@@ -29,9 +28,7 @@ const miniArticlesQuery = qs.stringify({
 });
 
 const MiniArticles = async () => {
-  const { data } = (await getArticlesData(miniArticlesQuery)) as {
-    data: SoftArticleType[];
-  };
+  const { data } = await getArticlesData(miniArticlesQuery);
 
   return (
     <>

@@ -1,11 +1,8 @@
 import qs from "qs";
-import axios from "axios";
 import { SocialIcon } from "react-social-icons";
-import { flattenAttributes } from "@/lib/utils";
-import { SocialLinkType } from "@/types/social";
+import { getSocialsData } from "@/lib/utils";
 import { FC } from "react";
 import Link from "next/link";
-import { BASE_URL } from "@/constants";
 
 interface SocialNetworksProps {
   height: number;
@@ -16,13 +13,8 @@ const socialsQuery = qs.stringify({
   fields: ["name", "url", "user"],
 });
 
-const getSocialsData = async () => {
-  const { data } = await axios(`${BASE_URL}/api/socials?${socialsQuery}`);
-  return flattenAttributes(data.data) as SocialLinkType[];
-};
-
 const SocialNetworks: FC<SocialNetworksProps> = async ({ height, width }) => {
-  const socials = await getSocialsData();
+  const socials = await getSocialsData(socialsQuery);
 
   return (
     <ul className="flex flex-col gap-0 sm:flex-row lg:gap-4">

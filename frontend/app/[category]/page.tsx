@@ -2,7 +2,7 @@ import qs from "qs";
 import { getCategoryData } from "@/lib/utils";
 import axios from "axios";
 import { Suspense } from "react";
-import { CategoryName, SoftCategoryType } from "@/types/category";
+import { CategoryName } from "@/types/category";
 import { BASE_URL, categoriesId } from "@/constants";
 import { ArticlesSkeleton } from "@/components/skeletons/ArticleCardSkeleton";
 import { Metadata } from "next";
@@ -32,10 +32,7 @@ const page = async ({ params, searchParams }: Readonly<Props>) => {
 
   const categoryId = categoriesId[params.category];
 
-  const category = (await getCategoryData(categoryId, query)) as Pick<
-    SoftCategoryType,
-    "name" | "description"
-  >;
+  const category = await getCategoryData(categoryId, query);
 
   return (
     <main className="mx-auto flex max-w-[1400px] flex-col items-center justify-center gap-8 px-5 py-8 lg:px-8">

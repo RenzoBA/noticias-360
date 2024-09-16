@@ -1,7 +1,11 @@
 import { BASE_URL } from "@/constants";
+import { ArticleMetaType, ArticleType, SoftArticleType } from "@/types/article";
+import { CategoryLinkType, SoftCategoryType } from "@/types/category";
 import axios from "axios";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import qs from "qs";
+import { SocialLinkType } from "@/types/social";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -47,22 +51,96 @@ export function flattenAttributes(data: any): any {
   return flattened;
 }
 
-export const getCategoryData = async (categoryId: string, query: string) => {
+export const getSocialsData = async (
+  query: string
+): Promise<SocialLinkType[]> => {
+  const { data } = await axios(`${BASE_URL}/api/socials?${query}`).catch(
+    () => ({ data: { data: [] } })
+  );
+  return flattenAttributes(data.data);
+};
+
+export const getCategoriesData = async (
+  query: string
+): Promise<CategoryLinkType[]> => {
+  const { data } = await axios(`${BASE_URL}/api/categories?${query}`).catch(
+    () => ({ data: { data: [] } })
+  );
+  return flattenAttributes(data.data);
+};
+
+export const getCategoryData = async (
+  categoryId: string,
+  query: string
+): Promise<
+  SoftCategoryType | Pick<SoftCategoryType, "name" | "description">
+> => {
   const { data } = await axios(
     `${BASE_URL}/api/categories/${categoryId}?${query}`
+  ).catch(() => ({ data: null }));
+  return flattenAttributes(data);
+};
+
+export const getArticlesData = async (
+  query: string
+): Promise<{
+  data: SoftArticleType[];
+}> => {
+  const { data } = await axios(`${BASE_URL}/api/articles?${query}`).catch(
+    () => ({ data: { data: [] } })
   );
-
   return flattenAttributes(data);
 };
 
-export const getArticlesData = async (query: string) => {
-  const { data } = await axios(`${BASE_URL}/api/articles?${query}`);
-  return flattenAttributes(data);
-};
-
-export const getArticleData = async (slug: string, query: string) => {
+export const getArticleData = async (
+  slug: string,
+  query: string
+): Promise<ArticleType> => {
   const { data } = await axios(
     `${BASE_URL}/api/articles/${slug.split("-").at(-1)}?${query}`
-  );
+  ).catch(() => ({ data: null }));
+  return flattenAttributes(data);
+};
+
+export const getArticlesPageData = async (
+  categoryId: string,
+  currentPage: number
+): Promise<{
+  data: SoftArticleType[];
+  meta: ArticleMetaType;
+}> => {
+  const articlesPageQuery = qs.stringify({
+    sort: ["publishedAt:desc"],
+    fields: ["title", "publishedAt", "lead", "slug"],
+    filters: {
+      categories: {
+        id: categoryId,
+      },
+    },
+    populate: {
+      user: {
+        fields: ["username"],
+        populate: {
+          photo: {
+            fields: ["alternativeText", "formats"],
+          },
+        },
+      },
+      categories: {
+        fields: ["name", "slug"],
+      },
+      cover: {
+        fields: ["alternativeText", "formats"],
+      },
+    },
+    pagination: {
+      pageSize: 12,
+      page: currentPage,
+    },
+  });
+
+  const { data } = await axios(
+    `${BASE_URL}/api/articles?${articlesPageQuery}`
+  ).catch(() => ({ data: { data: [] } }));
   return flattenAttributes(data);
 };

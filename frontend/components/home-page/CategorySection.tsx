@@ -1,8 +1,6 @@
 import qs from "qs";
-import { flattenAttributes } from "@/lib/utils";
+import { getCategoryData } from "@/lib/utils";
 import { SoftCategoryType } from "@/types/category";
-import axios from "axios";
-import { BASE_URL } from "@/constants";
 import Link from "next/link";
 import ArticleCard from "../articles/ArticleCard";
 import { FC, Suspense } from "react";
@@ -39,13 +37,15 @@ const query = qs.stringify({
   },
 });
 
-const getCategoryData = async (id: number) => {
-  const { data } = await axios(`${BASE_URL}/api/categories/${id}?${query}`);
-  return flattenAttributes(data) as SoftCategoryType;
-};
-
 const CategorySection: FC<CategorySectionProps> = async ({ id }) => {
-  const category = await getCategoryData(id);
+  const categoryId = id.toString();
+
+  const category = (await getCategoryData(
+    categoryId,
+    query
+  )) as SoftCategoryType;
+
+  if (!category) return;
 
   return (
     <section className="mt-16 flex w-full flex-col gap-4 divide-y divide-primary">

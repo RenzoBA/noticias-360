@@ -1,7 +1,6 @@
 import { getArticlesData } from "@/lib/utils";
 import qs from "qs";
 import CompactArticleCard from "./CompactArticleCard";
-import { SoftArticleType } from "@/types/article";
 
 const compactArticlesQuery = qs.stringify({
   sort: ["publishedAt:desc"],
@@ -29,9 +28,7 @@ const compactArticlesQuery = qs.stringify({
 });
 
 const CompactArticles = async () => {
-  const { data } = (await getArticlesData(compactArticlesQuery)) as {
-    data: SoftArticleType[];
-  };
+  const { data } = await getArticlesData(compactArticlesQuery);
 
   return (
     <>
