@@ -5,9 +5,10 @@ export function middleware(request: NextRequest) {
   const cspHeader = `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-    style-src 'self' 'nonce-${nonce}';
-    img-src 'self' blob: data:;
-    font-src 'self';
+    style-src 'self' 'nonce-${nonce}' https://noticias360.com.pe;
+    style-src-elem 'self' 'nonce-${nonce}' https://noticias360.com.pe;
+    img-src 'self' https://noticias360.com.pe data: blob:;
+    font-src 'self' https://noticias360.com.pe;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
