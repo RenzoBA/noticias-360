@@ -59,6 +59,8 @@ services:
       - backend
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - noticias-360-network
 
 volumes:
   db-data:
