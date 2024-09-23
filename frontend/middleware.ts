@@ -3,16 +3,16 @@ import { NextRequest, NextResponse } from "next/server";
 export function middleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const cspHeader = `
-    default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
+    default-src 'self' https://noticias360.com.pe;
+    script-src 'self' 'nonce-${nonce}' https://noticias360.com.pe 'strict-dynamic';
     style-src 'self' 'nonce-${nonce}' https://noticias360.com.pe;
     style-src-elem 'self' 'nonce-${nonce}' https://noticias360.com.pe;
     img-src 'self' https://noticias360.com.pe data: blob:;
     font-src 'self' https://noticias360.com.pe;
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
+    object-src 'none' https://noticias360.com.pe;
+    base-uri 'self' https://noticias360.com.pe;
+    form-action 'self' https://noticias360.com.pe;
+    frame-ancestors 'none' https://noticias360.com.pe;
     upgrade-insecure-requests;
 `;
   // Replace newline characters and spaces
