@@ -5,14 +5,14 @@ export function middleware(request: NextRequest) {
   const cspHeader = `
     default-src 'self' https://noticias360.com.pe;
     script-src 'self' 'nonce-${nonce}' https://noticias360.com.pe 'strict-dynamic';
-    style-src 'self' 'nonce-${nonce}' https://noticias360.com.pe;
-    style-src-elem 'self' 'nonce-${nonce}' https://noticias360.com.pe;
+    style-src 'self' 'unsafe-hashes' 'nonce-${nonce}' https://noticias360.com.pe;
+    style-src-elem 'self' 'unsafe-hashes' 'nonce-${nonce}' https://noticias360.com.pe;
     img-src 'self' https://noticias360.com.pe data: blob:;
     font-src 'self' https://noticias360.com.pe;
-    object-src 'none' https://noticias360.com.pe;
+    object-src https://noticias360.com.pe;
     base-uri 'self' https://noticias360.com.pe;
     form-action 'self' https://noticias360.com.pe;
-    frame-ancestors 'none' https://noticias360.com.pe;
+    frame-ancestors https://noticias360.com.pe;
     upgrade-insecure-requests;
 `;
   // Replace newline characters and spaces
