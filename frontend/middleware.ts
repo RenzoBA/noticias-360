@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 export function middleware(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const cspHeader = `
-    default-src 'self' https://noticias360.com.pe;
+    default-src 'self' https://www.googletagmanager.com https://noticias360.com.pe;
     script-src 'self' 'nonce-${nonce}' https://noticias360.com.pe 'strict-dynamic';
-    style-src 'self' 'unsafe-hashes' 'nonce-${nonce}' https://noticias360.com.pe;
-    style-src-elem 'self' 'unsafe-hashes' 'nonce-${nonce}' https://noticias360.com.pe;
+    style-src 'self' https://noticias360.com.pe;
+    style-src-elem 'self' https://noticias360.com.pe;
     img-src 'self' https://noticias360.com.pe data: blob:;
     font-src 'self' https://noticias360.com.pe;
     object-src https://noticias360.com.pe;
