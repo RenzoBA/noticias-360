@@ -15,8 +15,16 @@ export default [
         useDefaults: true,
         directives: {
           "default-src": ["'self'", "https://admin.noticias360.com.pe"],
-          "script-src": ["'self'", "https://admin.noticias360.com.pe"],
-          "style-src": ["'self'", "https://admin.noticias360.com.pe"],
+          "script-src": [
+            "'self'",
+            "'strict-dynamic'",
+            "https://admin.noticias360.com.pe",
+          ],
+          "style-src": [
+            "'self'",
+            "'unsafe-inline'",
+            "https://admin.noticias360.com.pe",
+          ],
           "connect-src": ["'self'", "https:"],
           "img-src": [
             "'self'",
