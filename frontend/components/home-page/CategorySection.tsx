@@ -44,6 +44,7 @@ const CategorySection: FC<CategorySectionProps> = async ({ id }) => {
     categoryId,
     query
   )) as SoftCategoryType;
+  console.dir(category, { depth: null });
 
   if (!category) return;
 
