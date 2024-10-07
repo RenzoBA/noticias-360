@@ -11,7 +11,7 @@ const Footer = () => {
         width={260}
         height={100}
       />
-      <SocialNetworks height={50} width={50} />
+      <SocialNetworks />
       <div className="space-y-2 text-xs text-muted">
         <p>
           © 2024 Agencia de Comunicaciones 360 SAC. Todos los derechos

@@ -4,16 +4,11 @@ import { getSocialsData } from "@/lib/utils";
 import { FC } from "react";
 import Link from "next/link";
 
-interface SocialNetworksProps {
-  height: number;
-  width: number;
-}
-
 const socialsQuery = qs.stringify({
   fields: ["name", "url", "user"],
 });
 
-const SocialNetworks: FC<SocialNetworksProps> = async ({ height, width }) => {
+const SocialNetworks: FC = async () => {
   const socials = await getSocialsData(socialsQuery);
 
   return (
@@ -29,7 +24,6 @@ const SocialNetworks: FC<SocialNetworksProps> = async ({ height, width }) => {
             target="_blank"
             fgColor="white"
             bgColor="transparent"
-            style={{ height, width }}
           />
           <Link href={social.url} target="_blank" prefetch={false}>
             @<span className="group-hover:underline">{social.user}</span>
