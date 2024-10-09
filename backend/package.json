@@ -14,6 +14,7 @@
     "strapi": "strapi"
   },
   "dependencies": {
+    "@strapi-community/strapi-provider-upload-google-cloud-storage": "^4.10.5",
     "@strapi/plugin-cloud": "4.22.0",
     "@strapi/plugin-i18n": "4.22.0",
     "@strapi/plugin-users-permissions": "4.22.0",
@@ -24,7 +25,6 @@
     "react-router-dom": "5.3.4",
     "styled-components": "5.3.3"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"

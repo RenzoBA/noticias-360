@@ -28,6 +28,7 @@ export default [
             "blob:",
             "market-assets.strapi.io",
             "https://admin.noticias360.com.pe",
+            "storage.googleapis.com",
           ],
           "media-src": [
             "'self'",
@@ -35,6 +36,7 @@ export default [
             "blob:",
             "market-assets.strapi.io",
             "https://admin.noticias360.com.pe",
+            "storage.googleapis.com",
           ],
           upgradeInsecureRequests: null,
         },
