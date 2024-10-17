@@ -1,8 +1,6 @@
 import qs from "qs";
-import { BASE_URL } from "@/constants";
 import Link from "next/link";
 import { getArticlesData } from "@/lib/utils";
-import { SoftArticleType } from "@/types/article";
 
 const fixArticlesQuery = qs.stringify({
   sort: ["publishedAt:desc"],
@@ -45,7 +43,7 @@ const FixArticleCard = async () => {
         prefetch={false}
       >
         <img
-          src={BASE_URL + article.cover.formats.large.url}
+          src={article.cover.formats.large.url}
           className="absolute inset-0 h-full w-full object-cover transition-all duration-300 hover:brightness-90"
           alt={article.cover.alternativeText}
         />
@@ -75,7 +73,7 @@ const FixArticleCard = async () => {
         </p>
         <div className="mt-auto flex flex-row items-center gap-2">
           <img
-            src={`${BASE_URL + article.user.photo.formats.thumbnail.url}`}
+            src={article.user.photo.formats.thumbnail.url}
             alt={article.user.photo.alternativeText || ""}
             className="h-10 w-10 rounded-full"
           />

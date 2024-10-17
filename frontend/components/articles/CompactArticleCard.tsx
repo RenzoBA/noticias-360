@@ -1,4 +1,3 @@
-import { BASE_URL } from "@/constants";
 import { SoftArticleType } from "@/types/article";
 import Link from "next/link";
 import { FC } from "react";
@@ -22,7 +21,7 @@ const CompactArticleCard: FC<CompactArticleCardProps> = ({
         prefetch={false}
       >
         <img
-          src={BASE_URL + article.cover.formats.small.url}
+          src={article.cover.formats.small.url}
           className="absolute inset-0 h-full w-full object-cover transition-all duration-300 hover:brightness-90"
           alt={article.cover.alternativeText}
         />
@@ -49,7 +48,7 @@ const CompactArticleCard: FC<CompactArticleCardProps> = ({
         </Link>
         <div className="mt-auto flex flex-row items-center gap-2">
           <img
-            src={`${BASE_URL + article.user.photo.formats.thumbnail.url}`}
+            src={article.user.photo.formats.thumbnail.url}
             alt={article.user.photo.alternativeText || ""}
             className="h-10 w-10 rounded-full"
           />
