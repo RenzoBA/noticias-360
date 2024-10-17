@@ -7,7 +7,8 @@ export function middleware(request: NextRequest) {
     script-src 'self' 'nonce-${nonce}' https://noticias360.com.pe 'strict-dynamic';
     style-src 'self' 'unsafe-inline' https://noticias360.com.pe;
     style-src-elem 'self' https://noticias360.com.pe;
-    img-src 'self' https://noticias360.com.pe data: blob:;
+    img-src 'self' https://noticias360.com.pe storage.googleapis.com data: blob:;
+    media-src storage.googleapis.com;
     font-src 'self' https://noticias360.com.pe;
     object-src https://noticias360.com.pe;
     base-uri 'self' https://noticias360.com.pe;
