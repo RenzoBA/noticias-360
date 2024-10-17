@@ -70,7 +70,7 @@ const page: FC<Props> = async ({ params }) => {
         <div className="mt-4 flex w-full flex-row items-center justify-between text-neutral-600">
           <div className="flex flex-row items-center gap-2">
             <img
-              src={`${BASE_URL + article.user.photo.formats.thumbnail.url}`}
+              src={article.user.photo.formats.thumbnail.url}
               alt={article.user.photo.alternativeText || ""}
               className="h-12 w-12 rounded-full"
             />
@@ -101,7 +101,7 @@ const page: FC<Props> = async ({ params }) => {
       <article className="mx-auto max-w-3xl pt-8">
         <figure>
           <img
-            src={`${BASE_URL + article.cover.url}`}
+            src={article.cover.url}
             alt={article.cover.alternativeText || ""}
             className="w-full"
           />
