@@ -25,6 +25,9 @@ export type SoftArticleType = {
       small: {
         url: string;
       };
+      medium: {
+        url: string;
+      };
       large: {
         url: string;
       };

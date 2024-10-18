@@ -43,7 +43,9 @@ const FixArticleCard = async () => {
         prefetch={false}
       >
         <img
-          src={article.cover.formats.large.url}
+          src={
+            article.cover.formats.large.url ?? article.cover.formats.medium.url
+          }
           className="absolute inset-0 h-full w-full object-cover transition-all duration-300 hover:brightness-90"
           alt={article.cover.alternativeText}
         />
