@@ -4,7 +4,7 @@ import { FC, Suspense } from "react";
 import { getArticleData } from "@/lib/utils";
 import Link from "next/link";
 import CategorySection from "@/components/home-page/CategorySection";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import BlockRendererClient from "@/components/BlockRendererClient";
 import ArticleActions from "@/components/articles/ArticleActions";
 import { BASE_URL } from "@/constants";
@@ -13,13 +13,22 @@ interface Props {
   params: { category: string; article: string };
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const { data } = await axios(
     `${BASE_URL}/api/articles/${params.article.split("-").at(-1)}`
   );
 
+  const previousImages = (await parent).openGraph?.images || [];
+
   return {
     title: data.data.attributes.title,
+    description: data.data.attributes.lead,
+    openGraph: {
+      images: [data.data.attributes.cover.url, ...previousImages],
+    },
   };
 }
 
