@@ -34,6 +34,7 @@ const FixArticleCard = async () => {
   if (!article) return;
 
   const date = new Date(data[0].publishedAt);
+  console.log(article.cover);
 
   return (
     <article className="flex flex-col gap-4 text-pretty">
@@ -44,7 +45,9 @@ const FixArticleCard = async () => {
       >
         <img
           src={
-            article.cover.formats.large.url ?? article.cover.formats.medium.url
+            article.cover.formats.large.url ??
+            article.cover.formats.medium.url ??
+            article.cover.formats.small.url
           }
           className="absolute inset-0 h-full w-full object-cover transition-all duration-300 hover:brightness-90"
           alt={article.cover.alternativeText}
