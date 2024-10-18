@@ -46,7 +46,7 @@ const CompactArticleCard: FC<CompactArticleCardProps> = ({
         >
           {article.title}
         </Link>
-        <div className="mt-auto flex flex-row items-center gap-2">
+        {/* <div className="mt-auto flex flex-row items-center gap-2">
           <img
             src={article.user.photo.formats.thumbnail.url}
             alt={article.user.photo.alternativeText || ""}
@@ -69,7 +69,7 @@ const CompactArticleCard: FC<CompactArticleCardProps> = ({
               })}
             </time>
           </div>
-        </div>
+        </div> */}
       </div>
     </article>
   );

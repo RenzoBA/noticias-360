@@ -35,7 +35,7 @@ const MiniArticleCard: FC<MiniArticleCardProps> = ({
         >
           {article.title}
         </Link>
-        <div className="mt-auto flex flex-row items-center gap-2">
+        {/* <div className="mt-auto flex flex-row items-center gap-2">
           <img
             src={article.user.photo.formats.thumbnail.url}
             alt={article.user.photo.alternativeText || ""}
@@ -58,7 +58,7 @@ const MiniArticleCard: FC<MiniArticleCardProps> = ({
               })}
             </time>
           </div>
-        </div>
+        </div> */}
       </div>
       <Link
         href={`${categorySlug}/${article.slug}-${article.id}`}
