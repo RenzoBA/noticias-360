@@ -28,13 +28,12 @@
     "cover": {
       "type": "media",
       "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "required": true,
+      "allowedTypes": ["images"]
     },
     "categories": {
       "type": "relation",
+      "required": true,
       "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "articles"
@@ -46,6 +45,7 @@
     },
     "user": {
       "type": "relation",
+      "required": true,
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "news"
