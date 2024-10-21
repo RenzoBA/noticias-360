@@ -9,11 +9,13 @@ import { Toaster } from "@/components/ui/sonner";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  applicationName: "Noticias360",
+  abstract:
+    "Noticias verificadas de interés nacional e internacional. Únete a nuestra comunidad para estar al tanto de las últimas novedades en actualidad, política, deportes, cultura, tecnología y más.",
   title: {
     template:
-      "%s | Noticias 360 | Medio de comunicación confiable en Piura y el Perú",
-    default:
-      "Noticias 360 | Medio de comunicación confiable en Piura y el Perú",
+      "%s | Noticias360 | Medio de comunicación confiable en Piura y el Perú",
+    default: "Noticias360 | Medio de comunicación confiable en Piura y el Perú",
   },
   description:
     "Noticias verificadas de interés nacional e internacional. Únete a nuestra comunidad para estar al tanto de las últimas novedades en actualidad, política, deportes, cultura, tecnología y más.",
