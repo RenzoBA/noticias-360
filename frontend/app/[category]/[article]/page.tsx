@@ -1,5 +1,4 @@
 import qs from "qs";
-import axios from "axios";
 import { FC, Suspense } from "react";
 import { getArticleData } from "@/lib/utils";
 import Link from "next/link";
@@ -7,30 +6,28 @@ import CategorySection from "@/components/home-page/CategorySection";
 import { Metadata } from "next";
 import BlockRendererClient from "@/components/BlockRendererClient";
 import ArticleActions from "@/components/articles/ArticleActions";
-import { BASE_URL } from "@/constants";
 
 interface Props {
   params: { category: string; article: string };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { data } = await axios(
-    `${BASE_URL}/api/articles/${params.article.split("-").at(-1)}`
-  );
-  console.log("METADATA: ", data);
+  const article = await getArticleData(params.article, query);
 
   return {
-    title: data.data.attributes.title,
-    description: data.data.attributes.lead,
+    title: article.title,
+    description: article.lead,
     openGraph: {
-      title: data.data.attributes.title,
-      description: data.data.attributes.lead,
+      type: "article",
+      title: article.title,
+      description: article.lead,
+      publishedTime: article.publishedAt,
       images: [
         {
-          url: data.data.attributes.cover.url,
+          url: article.cover.url,
           width: 800,
           height: 600,
-          alt: data.data.attributes.cover.alternativeText || "",
+          alt: article.cover.alternativeText || "",
         },
       ],
     },
@@ -61,7 +58,6 @@ const page: FC<Props> = async ({ params }) => {
   const article = await getArticleData(params.article, query);
 
   const date = new Date(article.publishedAt);
-  console.log("PAGE: ", article);
 
   return (
     <main className="mx-auto flex max-w-[1400px] flex-col items-start justify-center px-5 py-8 lg:px-8">
