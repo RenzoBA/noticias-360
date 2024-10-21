@@ -21,6 +21,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: data.data.attributes.title,
     description: data.data.attributes.lead,
+    openGraph: {
+      title: data.data.attributes.title,
+      description: data.data.attributes.lead,
+      images: [
+        {
+          url: data.data.attributes.cover.url,
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
   };
 }
 
