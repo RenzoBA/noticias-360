@@ -28,7 +28,8 @@
         "X (Twitter)",
         "Instagram",
         "Threads",
-        "LinkedIn"
+        "LinkedIn",
+        "TikTok"
       ],
       "required": true
     }
