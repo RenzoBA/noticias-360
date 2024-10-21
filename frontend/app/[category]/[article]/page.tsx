@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { data } = await axios(
     `${BASE_URL}/api/articles/${params.article.split("-").at(-1)}`
   );
+  console.log("METADATA: ", data);
 
   return {
     title: data.data.attributes.title,
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: data.data.attributes.cover.url,
           width: 800,
           height: 600,
+          alt: data.data.attributes.cover.alternativeText || "",
         },
       ],
     },
@@ -59,6 +61,7 @@ const page: FC<Props> = async ({ params }) => {
   const article = await getArticleData(params.article, query);
 
   const date = new Date(article.publishedAt);
+  console.log("PAGE: ", article);
 
   return (
     <main className="mx-auto flex max-w-[1400px] flex-col items-start justify-center px-5 py-8 lg:px-8">
