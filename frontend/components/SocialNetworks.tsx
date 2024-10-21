@@ -12,7 +12,7 @@ const SocialNetworks: FC = async () => {
   const socials = await getSocialsData(socialsQuery);
 
   return (
-    <ul className="flex flex-col gap-0 sm:flex-row lg:gap-4">
+    <ul className="flex flex-col gap-0 md:flex-row lg:gap-4">
       {socials.map((social) => (
         <li
           key={social.id}
