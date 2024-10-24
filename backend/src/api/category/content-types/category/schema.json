@@ -23,6 +23,7 @@
     },
     "articles": {
       "type": "relation",
+      "required": true,
       "relation": "manyToMany",
       "target": "api::article.article",
       "mappedBy": "categories"
