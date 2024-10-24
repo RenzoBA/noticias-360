@@ -25,16 +25,18 @@ const ArticleCard: FC<ArticleCardProps> = ({ categorySlug, article }) => {
       </Link>
       <div className="flex h-[22rem] w-full flex-col items-start gap-2">
         <div className="flex flex-nowrap gap-2 text-xs font-medium uppercase text-custom-blue">
-          {article.categories.data.map((category) => (
-            <Link
-              key={category.id}
-              href={`/${category.slug}?page=1`}
-              className="whitespace-nowrap hover:underline"
-              prefetch={false}
-            >
-              {category.name}
-            </Link>
-          ))}
+          {article.categories.data
+            ? article.categories.data.map((category) => (
+                <Link
+                  key={category.id}
+                  href={`/${category.slug}?page=1`}
+                  className="whitespace-nowrap hover:underline"
+                  prefetch={false}
+                >
+                  {category.name}
+                </Link>
+              ))
+            : " "}
         </div>
         <Link
           href={`/${categorySlug}/${article.slug}-${article.id}`}
