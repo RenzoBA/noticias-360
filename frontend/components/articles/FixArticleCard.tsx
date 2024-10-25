@@ -65,7 +65,7 @@ const FixArticleCard = async () => {
         </div>
         <Link
           href={`${article.categories.data[0].slug}/${article.slug}-${article.id}`}
-          className="line-clamp-4 text-2xl font-bold hover:underline lg:text-4xl"
+          className="line-clamp-5 text-2xl font-bold tracking-[-0.02em] hover:underline lg:text-4xl"
           prefetch={false}
         >
           {article.title}

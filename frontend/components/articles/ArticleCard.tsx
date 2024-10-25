@@ -40,7 +40,7 @@ const ArticleCard: FC<ArticleCardProps> = ({ categorySlug, article }) => {
         </div>
         <Link
           href={`/${categorySlug}/${article.slug}-${article.id}`}
-          className="line-clamp-4 text-2xl font-bold hover:underline"
+          className="line-clamp-5 text-2xl font-bold tracking-[-0.02em] hover:underline"
           prefetch={false}
         >
           {article.title}

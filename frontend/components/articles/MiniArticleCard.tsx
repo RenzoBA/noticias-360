@@ -32,7 +32,7 @@ const MiniArticleCard: FC<MiniArticleCardProps> = ({
         </div>
         <Link
           href={`${categorySlug}/${article.slug}-${article.id}`}
-          className="line-clamp-4 text-base font-bold hover:underline"
+          className="line-clamp-5 text-base font-bold tracking-[-0.02em] hover:underline"
           prefetch={false}
         >
           {article.title}
