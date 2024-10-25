@@ -46,6 +46,7 @@ const CategorySection: FC<CategorySectionProps> = async ({ id }) => {
   )) as SoftCategoryType;
 
   if (!category) return;
+  console.log("ARTICLES - CATEGORY SECTION: ", category.articles);
 
   return (
     <section className="mt-16 flex w-full flex-col gap-4 divide-y divide-primary">
