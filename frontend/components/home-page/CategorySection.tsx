@@ -16,6 +16,11 @@ const query = qs.stringify({
     articles: {
       sort: ["publishedAt:desc"],
       fields: ["title", "publishedAt", "lead", "slug"],
+      filters: {
+        publishedAt: {
+          $notNull: true,
+        },
+      },
       populate: {
         user: {
           fields: ["username"],
