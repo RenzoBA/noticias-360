@@ -50,16 +50,18 @@ const FixArticleCard = async () => {
       </Link>
       <div className="flex w-full flex-col items-center gap-2 px-8 text-center">
         <div className="flex flex-nowrap gap-2 text-xs font-medium uppercase text-custom-blue">
-          {article.categories.data.map((category) => (
-            <Link
-              key={category.id}
-              href={`/${category.slug}?page=1`}
-              className="whitespace-nowrap hover:underline"
-              prefetch={false}
-            >
-              {category.name}
-            </Link>
-          ))}
+          {article.categories.data
+            ? article.categories.data.map((category) => (
+                <Link
+                  key={category.id}
+                  href={`/${category.slug}?page=1`}
+                  className="whitespace-nowrap hover:underline"
+                  prefetch={false}
+                >
+                  {category.name}
+                </Link>
+              ))
+            : " "}
         </div>
         <Link
           href={`${article.categories.data[0].slug}/${article.slug}-${article.id}`}
