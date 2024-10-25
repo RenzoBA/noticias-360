@@ -32,6 +32,7 @@ const FixArticleCard = async () => {
   const article = data[0];
 
   if (!article) return;
+  console.dir(article, { depth: null });
 
   const date = new Date(data[0].publishedAt);
 
@@ -50,7 +51,7 @@ const FixArticleCard = async () => {
       </Link>
       <div className="flex w-full flex-col items-center gap-2 px-8 text-center">
         <div className="flex flex-nowrap gap-2 text-xs font-medium uppercase text-custom-blue">
-          {article.categories.data
+          {article.categories
             ? article.categories.data.map((category) => (
                 <Link
                   key={category.id}
