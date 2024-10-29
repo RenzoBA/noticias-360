@@ -32,7 +32,6 @@ const FixArticleCard = async () => {
   const article = data[0];
 
   if (!article) return;
-  console.dir(article, { depth: null });
 
   const date = new Date(data[0].publishedAt);
 
@@ -74,21 +73,21 @@ const FixArticleCard = async () => {
         <p className="line-clamp-5 text-lg font-normal leading-6 lg:text-xl">
           {article.lead}
         </p>
-        {/* <div className="mt-auto flex flex-row items-center gap-2">
-          <img
+        <div className="mt-auto flex flex-row items-center gap-2">
+          {/* <img
             src={article.user.photo.formats.thumbnail.url}
             alt={article.user.photo.alternativeText || ""}
             className="h-10 w-10 rounded-full"
-          />
+          /> */}
           <div className="mt-1 flex flex-col gap-1 text-left text-xs font-medium text-neutral-600">
-            <p
+            {/* <p
               // href="/"
               // className="uppercase hover:underline"
               // prefetch={false}
               className="uppercase"
             >
               {article.user.username}
-            </p>
+            </p> */}
             <time datatype={article.publishedAt}>
               {date.toLocaleDateString("es-ES", {
                 day: "2-digit",
@@ -97,7 +96,7 @@ const FixArticleCard = async () => {
               })}
             </time>
           </div>
-        </div> */}
+        </div>
       </div>
     </article>
   );
