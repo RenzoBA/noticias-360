@@ -79,21 +79,21 @@ const page: FC<Props> = async ({ params }) => {
         </h1>
         <h2 className="mt-4 text-xl lg:text-2xl">{article.lead}</h2>
         <div className="mt-4 flex w-full flex-row items-center justify-between text-neutral-600">
-          {/* <div className="flex flex-row items-center gap-2">
-            <img
+          <div className="flex flex-row items-center gap-2">
+            {/* <img
               src={article.user.photo.formats.thumbnail.url}
               alt={article.user.photo.alternativeText || ""}
               className="h-12 w-12 rounded-full"
-            />
+            /> */}
             <div className="flex flex-col gap-2 text-xs font-medium">
-              <p
+              {/* <p
                 // href="/"
                 // className="uppercase hover:underline"
                 // prefetch={false}
                 className="uppercase"
               >
                 {article.user.username}
-              </p>
+              </p> */}
               <time datatype={article.publishedAt}>
                 {date.toLocaleDateString("es-ES", {
                   minute: "2-digit",
@@ -105,7 +105,7 @@ const page: FC<Props> = async ({ params }) => {
                 })}
               </time>
             </div>
-          </div> */}
+          </div>
           <ArticleActions />
         </div>
       </div>
