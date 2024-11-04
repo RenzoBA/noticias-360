@@ -12,6 +12,7 @@ const CompactArticleCard: FC<CompactArticleCardProps> = ({
   article,
 }) => {
   const date = new Date(article.publishedAt);
+  date.setHours(date.getHours() - 5);
 
   return (
     <article className="flex flex-col gap-4 text-balance pt-4">

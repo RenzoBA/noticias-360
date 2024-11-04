@@ -58,6 +58,7 @@ const page: FC<Props> = async ({ params }) => {
   const article = await getArticleData(params.article, query);
 
   const date = new Date(article.publishedAt);
+  date.setHours(date.getHours() - 5);
 
   return (
     <main className="mx-auto flex max-w-[1400px] flex-col items-start justify-center px-5 py-8 lg:px-8">

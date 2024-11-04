@@ -9,6 +9,7 @@ interface ArticleCardProps {
 
 const ArticleCard: FC<ArticleCardProps> = ({ categorySlug, article }) => {
   const date = new Date(article.publishedAt);
+  date.setHours(date.getHours() - 5);
 
   return (
     <article className="flex flex-col gap-4 text-balance">

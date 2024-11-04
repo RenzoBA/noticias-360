@@ -34,6 +34,7 @@ const FixArticleCard = async () => {
   if (!article) return;
 
   const date = new Date(data[0].publishedAt);
+  date.setHours(date.getHours() - 5);
 
   return (
     <article className="flex flex-col gap-4 text-pretty">
