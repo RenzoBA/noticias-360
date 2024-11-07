@@ -24,7 +24,7 @@ const ArticleCard: FC<ArticleCardProps> = ({ categorySlug, article }) => {
           alt={article.cover.alternativeText}
         />
       </Link>
-      <div className="flex h-[22rem] w-full flex-col items-start gap-2">
+      <div className="flex w-full flex-col items-start gap-2">
         <div className="flex flex-nowrap gap-2 text-xs font-medium uppercase text-custom-blue">
           {article.categories.data
             ? article.categories.data.map((category) => (
