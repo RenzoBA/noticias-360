@@ -49,7 +49,7 @@ const ArticleCard: FC<ArticleCardProps> = ({ categorySlug, article }) => {
         <p className="line-clamp-5 text-lg font-normal leading-6">
           {article.lead}
         </p>
-        <div className="mt-auto flex flex-row items-center gap-2">
+        <div className="mt-2 flex flex-row items-center gap-2">
           {/* <img
             src={article.user.photo.formats.thumbnail.url}
             alt={article.user.photo.alternativeText || ""}
